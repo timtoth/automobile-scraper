@@ -40,6 +40,8 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+car-info-api/node_modules/
+car-info-ui/node_modules/
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
