@@ -1,16 +1,17 @@
-// server.js
+import express from 'express';
+// import { requestLogger } from './route-middleware/logger';
+import requestLogger from "./middleware/logger";
+import routes from './routes';
+import cors, { type CorsOptions } from 'cors';
 
-const express = require('express');
-const cors = require('cors');
+
 const app = express();
 const port = 31002;
 const allowedOrigins = [
-  'http://localhost:5173', // For development testing (Vite default)
-  //'https://www.your-production-app.com', // Your actual deployed frontend URL
-  //'https://staging.your-app.com' // Any other legitimate domain
+  'http://localhost:5173', // local dev
 ];
 
-const corsOptions = {
+const corsOptions: CorsOptions = {
   // Check if the requesting origin is in the allowedOrigins list
   origin: (origin, callback) => {
     if (!origin) return callback(null, true); 
@@ -28,13 +29,10 @@ const corsOptions = {
 };
 
 // 1. Import the router module
-const loggerMiddleware = require('./route-middleware/logger');
-const carInfoRouter = require('./routes/car-info');
-const landingRouter = require('./routes/landing');
 
 // Middleware to parse JSON request bodies
 app.use(cors(corsOptions));
-app.use(loggerMiddleware);
+app.use(requestLogger);
 app.use(express.json());
 
 // Basic Root Endpoint (for health check)
@@ -42,10 +40,8 @@ app.get('/', (req, res) => {
   res.send('Welcome to the API!');
 });
 
-// 2. Mount the router at the base path '/api/users'
-// All routes defined in users.js will now be prefixed with this path.
-app.use('/api/car-info', carInfoRouter);
-app.use('/api/car-info', landingRouter);
+// Mount other routers here
+app.use('/api', routes);
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
