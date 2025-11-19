@@ -1,9 +1,8 @@
-import express from 'express';
-// import { requestLogger } from './route-middleware/logger';
+import express, { Response } from 'express';
 import requestLogger from "./middleware/logger";
+import { notFoundHandler } from './middleware/notFoundHandler';
 import routes from './routes';
 import cors, { type CorsOptions } from 'cors';
-
 
 const app = express();
 const port = 31002;
@@ -28,20 +27,21 @@ const corsOptions: CorsOptions = {
   optionsSuccessStatus: 204
 };
 
-// 1. Import the router module
-
-// Middleware to parse JSON request bodies
+// Middleware
 app.use(cors(corsOptions));
 app.use(requestLogger);
 app.use(express.json());
 
-// Basic Root Endpoint (for health check)
-app.get('/', (req, res) => {
-  res.send('Welcome to the API!');
+// root (for health check)
+app.get('/', (req, res: Response) => {
+  res.status(200).send({message: 'API is running.'});
 });
 
 // Mount other routers here
 app.use('/api', routes);
+
+// Additional Request Handling Middleware
+app.use(notFoundHandler);
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);

@@ -12,7 +12,7 @@
     "start-npx": "npx ts-node src/server.ts",
     "debug": "nodemon src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc -p"
+    "build": "tsc -p ."
   },
   "dependencies": {
     "@types/express": "^5.0.5",
