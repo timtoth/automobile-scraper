@@ -7,7 +7,7 @@ export function errorHandler(
   next: NextFunction
 ) {
   console.error("ERROR:", err);
-
+  // TODO: Log error to postgres
   res.status(err.status || 500).json({
     message: err.message || "Internal Server Error",
   });

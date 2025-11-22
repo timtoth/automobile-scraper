@@ -3,6 +3,7 @@ import requestLogger from "./middleware/logger";
 import { notFoundHandler } from './middleware/notFoundHandler';
 import routes from './routes';
 import cors, { type CorsOptions } from 'cors';
+import { errorHandler } from './middleware/errorHandler';
 
 const app = express();
 const port = 31002;
@@ -42,6 +43,7 @@ app.use('/api', routes);
 
 // Additional Request Handling Middleware
 app.use(notFoundHandler);
+app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);

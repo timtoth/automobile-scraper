@@ -1,10 +1,11 @@
 import { Router } from "express";
-//import usersRoutes from "./users.routes";
-import carsRoutes from "./car-info";
+import carsRoutes from "./car-info.routes";
+import authRoutes from "./auth.routes";
+import { authenticate } from "../middleware/auth.handler";
 
 const router = Router();
 
-//router.use("/users", usersRoutes);
-router.use("/car-info", carsRoutes);
+router.use("/auth", authRoutes);
+router.use("/car-info", authenticate, carsRoutes);
 
 export default router;
