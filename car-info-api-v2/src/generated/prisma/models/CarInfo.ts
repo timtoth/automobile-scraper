@@ -43,6 +43,7 @@ export type CarInfoMinAggregateOutputType = {
   make: string | null
   model: string | null
   year: number | null
+  created: Date | null
   userId: number | null
 }
 
@@ -51,6 +52,7 @@ export type CarInfoMaxAggregateOutputType = {
   make: string | null
   model: string | null
   year: number | null
+  created: Date | null
   userId: number | null
 }
 
@@ -59,6 +61,7 @@ export type CarInfoCountAggregateOutputType = {
   make: number
   model: number
   year: number
+  created: number
   userId: number
   _all: number
 }
@@ -81,6 +84,7 @@ export type CarInfoMinAggregateInputType = {
   make?: true
   model?: true
   year?: true
+  created?: true
   userId?: true
 }
 
@@ -89,6 +93,7 @@ export type CarInfoMaxAggregateInputType = {
   make?: true
   model?: true
   year?: true
+  created?: true
   userId?: true
 }
 
@@ -97,6 +102,7 @@ export type CarInfoCountAggregateInputType = {
   make?: true
   model?: true
   year?: true
+  created?: true
   userId?: true
   _all?: true
 }
@@ -192,6 +198,7 @@ export type CarInfoGroupByOutputType = {
   make: string
   model: string
   year: number
+  created: Date
   userId: number
   _count: CarInfoCountAggregateOutputType | null
   _avg: CarInfoAvgAggregateOutputType | null
@@ -223,6 +230,7 @@ export type CarInfoWhereInput = {
   make?: Prisma.StringFilter<"CarInfo"> | string
   model?: Prisma.StringFilter<"CarInfo"> | string
   year?: Prisma.IntFilter<"CarInfo"> | number
+  created?: Prisma.DateTimeFilter<"CarInfo"> | Date | string
   userId?: Prisma.IntFilter<"CarInfo"> | number
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
@@ -232,6 +240,7 @@ export type CarInfoOrderByWithRelationInput = {
   make?: Prisma.SortOrder
   model?: Prisma.SortOrder
   year?: Prisma.SortOrder
+  created?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
 }
@@ -244,6 +253,7 @@ export type CarInfoWhereUniqueInput = Prisma.AtLeast<{
   make?: Prisma.StringFilter<"CarInfo"> | string
   model?: Prisma.StringFilter<"CarInfo"> | string
   year?: Prisma.IntFilter<"CarInfo"> | number
+  created?: Prisma.DateTimeFilter<"CarInfo"> | Date | string
   userId?: Prisma.IntFilter<"CarInfo"> | number
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
@@ -253,6 +263,7 @@ export type CarInfoOrderByWithAggregationInput = {
   make?: Prisma.SortOrder
   model?: Prisma.SortOrder
   year?: Prisma.SortOrder
+  created?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   _count?: Prisma.CarInfoCountOrderByAggregateInput
   _avg?: Prisma.CarInfoAvgOrderByAggregateInput
@@ -269,6 +280,7 @@ export type CarInfoScalarWhereWithAggregatesInput = {
   make?: Prisma.StringWithAggregatesFilter<"CarInfo"> | string
   model?: Prisma.StringWithAggregatesFilter<"CarInfo"> | string
   year?: Prisma.IntWithAggregatesFilter<"CarInfo"> | number
+  created?: Prisma.DateTimeWithAggregatesFilter<"CarInfo"> | Date | string
   userId?: Prisma.IntWithAggregatesFilter<"CarInfo"> | number
 }
 
@@ -276,7 +288,8 @@ export type CarInfoCreateInput = {
   make: string
   model: string
   year: number
-  user: Prisma.UserCreateNestedOneWithoutPostsInput
+  created?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutCarsInput
 }
 
 export type CarInfoUncheckedCreateInput = {
@@ -284,6 +297,7 @@ export type CarInfoUncheckedCreateInput = {
   make: string
   model: string
   year: number
+  created?: Date | string
   userId: number
 }
 
@@ -291,7 +305,8 @@ export type CarInfoUpdateInput = {
   make?: Prisma.StringFieldUpdateOperationsInput | string
   model?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
-  user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
+  created?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutCarsNestedInput
 }
 
 export type CarInfoUncheckedUpdateInput = {
@@ -299,6 +314,7 @@ export type CarInfoUncheckedUpdateInput = {
   make?: Prisma.StringFieldUpdateOperationsInput | string
   model?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
+  created?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -307,6 +323,7 @@ export type CarInfoCreateManyInput = {
   make: string
   model: string
   year: number
+  created?: Date | string
   userId: number
 }
 
@@ -314,6 +331,7 @@ export type CarInfoUpdateManyMutationInput = {
   make?: Prisma.StringFieldUpdateOperationsInput | string
   model?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
+  created?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CarInfoUncheckedUpdateManyInput = {
@@ -321,6 +339,7 @@ export type CarInfoUncheckedUpdateManyInput = {
   make?: Prisma.StringFieldUpdateOperationsInput | string
   model?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
+  created?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -339,6 +358,7 @@ export type CarInfoCountOrderByAggregateInput = {
   make?: Prisma.SortOrder
   model?: Prisma.SortOrder
   year?: Prisma.SortOrder
+  created?: Prisma.SortOrder
   userId?: Prisma.SortOrder
 }
 
@@ -353,6 +373,7 @@ export type CarInfoMaxOrderByAggregateInput = {
   make?: Prisma.SortOrder
   model?: Prisma.SortOrder
   year?: Prisma.SortOrder
+  created?: Prisma.SortOrder
   userId?: Prisma.SortOrder
 }
 
@@ -361,6 +382,7 @@ export type CarInfoMinOrderByAggregateInput = {
   make?: Prisma.SortOrder
   model?: Prisma.SortOrder
   year?: Prisma.SortOrder
+  created?: Prisma.SortOrder
   userId?: Prisma.SortOrder
 }
 
@@ -416,6 +438,7 @@ export type CarInfoCreateWithoutUserInput = {
   make: string
   model: string
   year: number
+  created?: Date | string
 }
 
 export type CarInfoUncheckedCreateWithoutUserInput = {
@@ -423,6 +446,7 @@ export type CarInfoUncheckedCreateWithoutUserInput = {
   make: string
   model: string
   year: number
+  created?: Date | string
 }
 
 export type CarInfoCreateOrConnectWithoutUserInput = {
@@ -459,6 +483,7 @@ export type CarInfoScalarWhereInput = {
   make?: Prisma.StringFilter<"CarInfo"> | string
   model?: Prisma.StringFilter<"CarInfo"> | string
   year?: Prisma.IntFilter<"CarInfo"> | number
+  created?: Prisma.DateTimeFilter<"CarInfo"> | Date | string
   userId?: Prisma.IntFilter<"CarInfo"> | number
 }
 
@@ -467,12 +492,14 @@ export type CarInfoCreateManyUserInput = {
   make: string
   model: string
   year: number
+  created?: Date | string
 }
 
 export type CarInfoUpdateWithoutUserInput = {
   make?: Prisma.StringFieldUpdateOperationsInput | string
   model?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
+  created?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CarInfoUncheckedUpdateWithoutUserInput = {
@@ -480,6 +507,7 @@ export type CarInfoUncheckedUpdateWithoutUserInput = {
   make?: Prisma.StringFieldUpdateOperationsInput | string
   model?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
+  created?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CarInfoUncheckedUpdateManyWithoutUserInput = {
@@ -487,6 +515,7 @@ export type CarInfoUncheckedUpdateManyWithoutUserInput = {
   make?: Prisma.StringFieldUpdateOperationsInput | string
   model?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
+  created?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -496,6 +525,7 @@ export type CarInfoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   make?: boolean
   model?: boolean
   year?: boolean
+  created?: boolean
   userId?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["carInfo"]>
@@ -505,6 +535,7 @@ export type CarInfoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   make?: boolean
   model?: boolean
   year?: boolean
+  created?: boolean
   userId?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["carInfo"]>
@@ -514,6 +545,7 @@ export type CarInfoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   make?: boolean
   model?: boolean
   year?: boolean
+  created?: boolean
   userId?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["carInfo"]>
@@ -523,10 +555,11 @@ export type CarInfoSelectScalar = {
   make?: boolean
   model?: boolean
   year?: boolean
+  created?: boolean
   userId?: boolean
 }
 
-export type CarInfoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "make" | "model" | "year" | "userId", ExtArgs["result"]["carInfo"]>
+export type CarInfoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "make" | "model" | "year" | "created" | "userId", ExtArgs["result"]["carInfo"]>
 export type CarInfoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -547,6 +580,7 @@ export type $CarInfoPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     make: string
     model: string
     year: number
+    created: Date
     userId: number
   }, ExtArgs["result"]["carInfo"]>
   composites: {}
@@ -976,6 +1010,7 @@ export interface CarInfoFieldRefs {
   readonly make: Prisma.FieldRef<"CarInfo", 'String'>
   readonly model: Prisma.FieldRef<"CarInfo", 'String'>
   readonly year: Prisma.FieldRef<"CarInfo", 'Int'>
+  readonly created: Prisma.FieldRef<"CarInfo", 'DateTime'>
   readonly userId: Prisma.FieldRef<"CarInfo", 'Int'>
 }
     

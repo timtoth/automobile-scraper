@@ -27,3 +27,13 @@ export type User = Prisma.UserModel
  * 
  */
 export type CarInfo = Prisma.CarInfoModel
+/**
+ * Model Role
+ * 
+ */
+export type Role = Prisma.RoleModel
+/**
+ * Model RequestLog
+ * 
+ */
+export type RequestLog = Prisma.RequestLogModel

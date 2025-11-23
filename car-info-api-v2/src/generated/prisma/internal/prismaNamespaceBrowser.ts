@@ -52,7 +52,9 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
-  CarInfo: 'CarInfo'
+  CarInfo: 'CarInfo',
+  Role: 'Role',
+  RequestLog: 'RequestLog'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -74,7 +76,9 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
-  name: 'name'
+  name: 'name',
+  created: 'created',
+  roleId: 'roleId'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -85,10 +89,31 @@ export const CarInfoScalarFieldEnum = {
   make: 'make',
   model: 'model',
   year: 'year',
+  created: 'created',
   userId: 'userId'
 } as const
 
 export type CarInfoScalarFieldEnum = (typeof CarInfoScalarFieldEnum)[keyof typeof CarInfoScalarFieldEnum]
+
+
+export const RoleScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+} as const
+
+export type RoleScalarFieldEnum = (typeof RoleScalarFieldEnum)[keyof typeof RoleScalarFieldEnum]
+
+
+export const RequestLogScalarFieldEnum = {
+  id: 'id',
+  path: 'path',
+  severity: 'severity',
+  message: 'message',
+  created: 'created',
+  userId: 'userId'
+} as const
+
+export type RequestLogScalarFieldEnum = (typeof RequestLogScalarFieldEnum)[keyof typeof RequestLogScalarFieldEnum]
 
 
 export const SortOrder = {
