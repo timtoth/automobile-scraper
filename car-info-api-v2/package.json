@@ -1,0 +1,29 @@
+{
+  "name": "car-info-api-v2",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx --watch src/server.ts",
+    "start": "node dist/server.js",
+    "build": "tsc",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@tsconfig/node-lts": "^24.0.0",
+    "@types/express": "^5.0.5",
+    "@types/node": "^24.10.1",
+    "tsc": "^2.0.4",
+    "tsx": "^4.20.6"
+  }
+}
