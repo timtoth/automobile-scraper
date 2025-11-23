@@ -10,7 +10,8 @@
   "exclude": [
     "dist"
   ],
-  "ignoreDeprecations": "6.0"
+  "ignoreDeprecations": "6.0",
+  "moduleResolution": "node"
 }
 // {
 //   // Visit https://aka.ms/tsconfig to read more about this file
