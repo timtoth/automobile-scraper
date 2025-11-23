@@ -5,7 +5,10 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "tsx --watch src/server.ts",
+    "local": "tsx --watch --env-file .env src/server.ts",
+    "dev": "tsx --watch --env-file .env src/server.ts",
+    "dev:staging": "tsx --watch --env-file .env src/server.ts",
+    "dev:prod": "tsx --watch --env-file .env src/server.ts",
     "start": "node dist/server.js",
     "build": "tsc",
     "type-check": "tsc --noEmit",
@@ -13,7 +16,7 @@
     "lint:fix": "eslint --fix .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest"
   },
   "dependencies": {
     "express": "^5.1.0",
@@ -23,7 +26,9 @@
     "@tsconfig/node-lts": "^24.0.0",
     "@types/express": "^5.0.5",
     "@types/node": "^24.10.1",
+    "@vitest/coverage-v8": "^4.0.13",
     "tsc": "^2.0.4",
-    "tsx": "^4.20.6"
+    "tsx": "^4.20.6",
+    "vitest": "^4.0.13"
   }
 }
