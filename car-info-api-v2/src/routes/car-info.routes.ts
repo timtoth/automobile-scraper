@@ -1,11 +1,14 @@
 import { Router } from "express";
-import * as CarsController from "../controllers/car-info.controller";
-import { asyncHandler } from "../middleware/async.handler";
+import { asyncHandler } from "../middleware/async.handler.js";
+import { authenticate } from "../middleware/auth.handler.js";
+import { validate } from "../middleware/validate.js";
+import { CreateCarInfoDto } from "../utils/car-info-dto.util.js";
+import { carController } from "../controllers/car-info.controller.js";
 
-const router = Router();
+const carsRoutes = Router();
 
-router.get("/", asyncHandler(CarsController.getCars));
-router.get("/:id", CarsController.getCarById);
-router.post("/save", CarsController.createCar);
+carsRoutes.get("/", authenticate, asyncHandler(carController.getCars));
+carsRoutes.get("/:id", authenticate, asyncHandler(carController.getCarById));
+carsRoutes.post("/save", authenticate, validate(CreateCarInfoDto), asyncHandler(carController.createCar));
 
-export default router;
+export default carsRoutes;

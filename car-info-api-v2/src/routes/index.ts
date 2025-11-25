@@ -1,7 +1,7 @@
 import { Router } from "express";
-import carsRoutes from "./car-info.routes";
-import authRoutes from "./auth.routes";
-import { authenticate } from "../middleware/auth.handler";
+import authRoutes from "./auth.routes.js";
+import { authenticate } from "../middleware/auth.handler.js";
+import carsRoutes from "./car-info.routes.js";
 
 const router = Router();
 

@@ -11,7 +11,8 @@
     "dist"
   ],
   "ignoreDeprecations": "6.0",
-  "moduleResolution": "node"
+  "moduleResolution": "node",
+  "sourceMap": true
 }
 // {
 //   // Visit https://aka.ms/tsconfig to read more about this file
