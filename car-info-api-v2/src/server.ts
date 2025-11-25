@@ -4,14 +4,14 @@ import requestLogger from "./middleware/logger.js";
 import { notFoundHandler } from "./middleware/notFoundHandler.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import { corsOptions } from "./middleware/cors.js";
-import cors from "cors";
+//import cors from "cors";
 import router from "./routes/index.js";
 
 const app = express();
 const port = parseInt(process.env.PORT?? "31002", 10) ?? 31002;
 
 //middleware
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.use(requestLogger);
 app.use(express.json());
 
